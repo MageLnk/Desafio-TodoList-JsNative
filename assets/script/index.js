@@ -34,15 +34,17 @@ let arrayTodoList = [
 ];
 
 const totalActivities = (elements) => {
-  return elements.length;
+  document.querySelector("#total-activities").innerHTML = elements.length;
+  return;
 };
 
-const completedActivities = (elements) => {
+const totalCompletedActivities = (elements) => {
   document.querySelector("#completed-activities").innerHTML = "";
   const newArray = elements.filter((e) => {
     return e.completed;
   });
-  return newArray.length;
+  document.querySelector("#completed-activities").innerHTML = newArray.length;
+  return;
 };
 
 const deleteActivity = (element) => {
@@ -69,7 +71,8 @@ const handleClickOnCheckbox = (id) => {
 };
 
 const loadActivities = (elements) => {
-  document.querySelector("#total-activities").innerHTML = totalActivities(arrayTodoList);
+  totalActivities(arrayTodoList);
+  totalCompletedActivities(arrayTodoList);
   document.querySelector(".checkbox-container").innerHTML = "";
   for (let i = 0; i < elements.length; i++) {
     document.querySelector(".checkbox-container").innerHTML += `
@@ -103,6 +106,5 @@ document.getElementById("preventDefault").addEventListener("submit", (e) => {
 });
 
 window.addEventListener("DOMContentLoaded", () => {
-  document.querySelector("#completed-activities").innerHTML = completedActivities(arrayTodoList);
   loadActivities(arrayTodoList);
 });
