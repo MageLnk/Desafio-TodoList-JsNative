@@ -15,26 +15,20 @@
           <p>Ingrese nueva tarea</p>
           <div class="input-div">
             <input type="text" placeholder="Nueva tarea" />
-            <button onclick="ignorarEsto()">Agregar</button>
+            <button onclick="ignorarEsto(), addNewActivity()">Agregar</button>
           </div>
         </div>
         <div class="results">
           <div class="general-results">
             <h4>Total: <span id="total-activities">Loading...</span></h4>
-            <h4>Realizadas <span>Loading...</span></h4>
+            <h4>Realizadas <span id="completed-activities">Loading...</span></h4>
           </div>
           <div class="specific-results">
             <div class="id-div">
               <h4>ID</h4>
               <h4>Tarea</h4>
             </div>
-            <div class="checkbox-container">
-              <div class="checkbox-div">
-                <span class="id-activy">0000</span>
-                <span class="task">Loading...</span>
-                <input type="checkbox" />
-              </div>
-            </div>
+            <div class="checkbox-container"><p>Loading...</p></div>
           </div>
         </div>
       </div>
