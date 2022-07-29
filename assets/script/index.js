@@ -26,6 +26,7 @@ const totalActivities = (elements) => {
 };
 
 const completedActivities = (elements) => {
+  document.querySelector("#completed-activities").innerHTML = "";
   const newArray = elements.filter((e) => {
     return e.completed;
   });
@@ -40,20 +41,22 @@ const loadActivities = (elements) => {
     <div class="checkbox-div">
         <span class="id-activy">${elements[i].id}</span>
         <span class="task">${elements[i].activity}</span>
-        <input type="checkbox" value=${elements[i].id} ${
-      elements[i].completed && "checked"
-    } onclick="addNewActivity()" />
-        <span class="delete-checkbox" onclick="ignorarEsto()">X</span>
+        <input type="checkbox" ${elements[i].completed && "checked"} onclick="addNewActivity()" />
+        <span class="delete-checkbox" onclick="deleteActivity(${elements[i].id})">X</span>
     </div>
         `;
   }
 };
 
-const ignorarEsto = () => {
-  console.log("Ignora esto");
+const deleteActivity = (element) => {
+  const newArray = arrayTodoList.filter((e) => {
+    return !(e.id === element);
+  });
+  arrayTodoList = newArray;
+  loadActivities(arrayTodoList);
 };
 
-// Prevent default
+// onSubmit
 document.getElementById("preventDefault").addEventListener("submit", (e) => {
   e.preventDefault();
   const inputValue = document.querySelector("#input-new-activity").value;
