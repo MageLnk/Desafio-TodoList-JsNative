@@ -19,6 +19,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
+  border-top: 1px black solid;
 }
 
 .input-div {
@@ -62,14 +63,19 @@ body {
   margin: 1rem 1rem 0 0;
 }
 
+.checkbox-container {
+  display: flex;
+  flex-direction: column;
+}
 .checkbox-div {
   display: flex;
   margin: 1rem 0 0 0;
   align-items: flex-start;
 }
-.checkbox-div .task {
-  width: 9.2rem;
+.checkbox-div .id-activy {
+  width: 1rem;
 }
-.checkbox-div span {
-  margin: 0 1rem 0 0;
+.checkbox-div .task {
+  margin: 0 0 0 1.2rem;
+  width: 10rem;
 }
