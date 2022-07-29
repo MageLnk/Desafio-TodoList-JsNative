@@ -1,21 +1,21 @@
 let arrayTodoList = [
   {
-    id: "001",
+    id: 1,
     activity: "Ver películas",
     completed: false,
   },
   {
-    id: "002",
+    id: 2,
     activity: "Ver anime",
     completed: false,
   },
   {
-    id: "003",
+    id: 3,
     activity: "Ver series",
     completed: true,
   },
   {
-    id: "004",
+    id: 4,
     activity: "Ver youtube",
     completed: false,
   },
@@ -33,6 +33,8 @@ const completedActivities = (elements) => {
 };
 
 const loadActivities = (elements) => {
+  document.querySelector("#total-activities").innerHTML = totalActivities(arrayTodoList);
+  document.querySelector(".checkbox-container").innerHTML = "";
   for (let i = 0; i < elements.length; i++) {
     document.querySelector(".checkbox-container").innerHTML += `
     <div class="checkbox-div">
@@ -41,22 +43,34 @@ const loadActivities = (elements) => {
         <input type="checkbox" value=${elements[i].id} ${
       elements[i].completed && "checked"
     } onclick="addNewActivity()" />
+        <span class="delete-checkbox" onclick="ignorarEsto()">X</span>
     </div>
         `;
   }
 };
 
-const addNewActivity = () => {
-  console.log("Esto funciona");
+const ignorarEsto = () => {
+  console.log("Ignora esto");
 };
 
-const ignorarEsto = () => {
-  console.log(document.querySelectorAll("input"));
-};
+// Prevent default
+document.getElementById("preventDefault").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const inputValue = document.querySelector("#input-new-activity").value;
+  if (!inputValue) {
+    return alert("Escriba un valor por favor");
+  }
+  const newObject = {
+    id: arrayTodoList.length + 1,
+    activity: inputValue,
+    completed: false,
+  };
+  arrayTodoList.push(newObject);
+  document.querySelector("#input-new-activity").value = "";
+  loadActivities(arrayTodoList);
+});
 
 window.addEventListener("DOMContentLoaded", () => {
-  document.querySelector(".checkbox-container").innerHTML = "";
-  document.querySelector("#total-activities").innerHTML = totalActivities(arrayTodoList);
   document.querySelector("#completed-activities").innerHTML = completedActivities(arrayTodoList);
   loadActivities(arrayTodoList);
 });

@@ -79,3 +79,10 @@ body {
   margin: 0 0 0 1.2rem;
   width: 10rem;
 }
+.checkbox-div input {
+  margin: 0.15rem 0.5rem 0 0;
+}
+.checkbox-div .delete-checkbox {
+  color: red;
+  cursor: pointer;
+}
