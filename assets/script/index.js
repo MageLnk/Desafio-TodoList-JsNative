@@ -25,7 +25,6 @@ const totalActivities = (elements) => {
   return elements.length;
 };
 
-/*
 const loadActivities = (elements) => {
   for (let i = 0; i < elements.length; i++) {
     console.log(elements);
@@ -38,13 +37,13 @@ const loadActivities = (elements) => {
         `;
   }
 };
-*/
+
 const ignorarEsto = () => {
   console.log(document.querySelector("#4"));
 };
 
 window.addEventListener("DOMContentLoaded", () => {
-  //document.querySelector(".checkbox-container").innerHTML = "";
+  document.querySelector(".checkbox-container").innerHTML = "";
   document.querySelector("#total-activities").innerHTML = totalActivities(arrayTodoList);
   loadActivities(arrayTodoList);
 });
