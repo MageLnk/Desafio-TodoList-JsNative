@@ -63,13 +63,25 @@ const handleClickOnCheckbox = (id) => {
     return +e.value === id;
   });
 
-  console.log("final", findCheckbox[0].checked);
+  const newTodoListArray = arrayTodoList.map((e) => {
+    if (e.id === +findCheckbox[0].value) {
+      let temporalObject = e;
+      temporalObject.completed = findCheckbox[0].checked;
+      return temporalObject;
+    }
+    return e;
+  });
+  arrayTodoList = newTodoListArray;
+  totalCompletedActivities(arrayTodoList);
   // Al final, por alguna razón, el .checked no funciona ya que el ID no funciona.
-  // En honor al tiempo, lo haré con selectorAll
-  //console.log("Ola k ase", document.querySelectorAll("input"));
-  //console.log("Y este", document.getElementById(`${id}`).checked);
+  // En honor al tiempo, lo haré con querySelectorAll en ves de querySelector o getElementById
+  // console.log("Ola k ase", document.querySelectorAll("input"));
+  // console.log("Y este", document.getElementById(`${id}`).checked);
+
+  // NOTA: No se me ocurrió una forma más bonita para sacar no usar el findCheckbox[0]
 };
 
+// Main operator of the app
 const loadActivities = (elements) => {
   totalActivities(arrayTodoList);
   totalCompletedActivities(arrayTodoList);
@@ -108,3 +120,6 @@ document.getElementById("preventDefault").addEventListener("submit", (e) => {
 window.addEventListener("DOMContentLoaded", () => {
   loadActivities(arrayTodoList);
 });
+
+// NOTA: Decidí hacer el ID con random debido a que, normalmente, los ID no los decidimos arbitrariamente nosotros.
+// Siempre los genera un algoritmo. En honor a "imitar" eso, improvisé un random number
